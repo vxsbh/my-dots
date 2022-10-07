@@ -1,1 +1,3 @@
-# This is a repository to store all of my dot files
+# my-dots
+
+This is a repository for me to backup all of my dot files.
