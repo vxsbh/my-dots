@@ -1,16 +1,9 @@
-  ###########     #######
-      # #                ##
-      # # 		            ##
-      # #          #######
-      # #                 ## 
-      # #                  ##
-  ###########	     ########
-
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-########## Variables ##########
+## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
+# Variables 
 
 set $mod Mod4
 set $mod2 Mod1
@@ -19,12 +12,61 @@ set $term alacritty
 set $filem nautilus
 set $mus com.github.taiko2k.tauonmb
 
-###############################
+## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
+# Shortcuts 
 
+# Terminal
+bindsym $mod+Return exec $term
 
-# sets a font to use for the UI
-# font pango:Mononoki Nerd Font 10
-font pango:DejaVu Sans Mono 10
+# Music Player
+bindsym $mod+Shift+t exec $mus 
+
+# Browser
+bindsym $mod+Shift+b exec $browser
+
+# File manager
+bindsym $mod+Shift+a exec $filem
+
+## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
+#Fonts
+
+font pango:Mononoki Nerd Font 10
+# font pango:DejaVu Sans Mono 10
+
+## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
+# Autostart Softwares
+
+# Picom
+exec_always picom --experimental-backends -b
+
+# Notification Daemon
+exec_always --no-startup-id $HOME/.config/dunst/launch_dunst.sh
+
+# Network Manager 
+exec --no-startup-id nm-applet
+
+# Keeb Layout
+exec_always setxkbmap fr bepo
+
+# Polybar "mainbar-i3"
+exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh
+
+# Conky
+exec_always --no-startup-id $HOME/.config/conky/launch_conky.sh
+
+# Last Used Wallpaper
+exec_always nitrogen --restore
+
+# Blueman Manager
+exec --no-startup-id blueman-manager
+
+# Power Manager
+exec_always --no-startup-id xfce4-power-manager
+
+# Fingerprint Sensor
+exec_always systemctl start python3-validity.service
+
+## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -171,59 +213,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
-############## Auto Start Applications ##################
-
-# Starts Picom
-exec_always picom --experimental-backends -b
-
-# Starts Notification Daemon
-exec_always --no-startup-id $HOME/.config/dunst/launch_dunst.sh
-
-# Start Bluetooth Manager
-# exec_always --no-startup-id blueman-applet
-
-# Start Network Manager 
-exec --no-startup-id nm-applet
-
-#Sets up correct KB layout
-exec_always setxkbmap fr bepo
-
-# Starts Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh
-
-# Starts Conky
-exec_always --no-startup-id $HOME/.config/conky/launch_conky.sh
-
-# Restores last used wallpaper
-exec_always nitrogen --restore
-
-# Syncs Pass & Pass iOS
-exec_always ~/.config/pass_sync.sh
-
-# Power Manager
-exec_always --no-startup-id xfce4-power-manager
-
-# Fingerprint Sensor
-exec_always systemctl start python3-validity.service
-
-######### Shortcuts ###########
-
-# start a terminal
-bindsym $mod+Return exec $term
-
-# Tauon Box Music Player
-bindsym $mod+Shift+t exec $mus 
-
-# Browser
-bindsym $mod+Shift+b exec $browser
-
-# File manager
-bindsym $mod+Shift+a exec $filem
-
-bindsym $mod2+F10 exec blueman-manager
-
-################# Windows Configuration #################
+## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
+# Windows Configuration
 
 #disables title bars
 for_window [class=".*"] border pixel 3
@@ -242,13 +233,14 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
 
-
-
+## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
+# Scratchpads
 
 bindsym $mod2+Shift+S move scratchpad
 bindsym $mod2+S scratchpad show
 
-
+## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
+# Floating Windows
 
 for_window [class="gnome-calculator"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
