@@ -17,15 +17,22 @@ set $mus com.github.taiko2k.tauonmb
 
 # Terminal
 bindsym $mod+Return exec $term
-
 # Music Player
 bindsym $mod+Shift+t exec $mus 
-
 # Browser
 bindsym $mod+Shift+b exec $browser
-
 # File manager
 bindsym $mod+Shift+a exec $filem
+# Lock Screen
+bindsym $mod2+l exec dm-tool switch-to-greeter
+# Kill Focused Window
+bindsym $mod+q kill
+# Start Rofi
+bindsym $mod+d exec --no-startup-id "rofi -show drun -show-icons"
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# reload the configuration file
+bindsym $mod+Shift+c reload
 
 ## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
 #Fonts
@@ -38,44 +45,62 @@ font pango:Mononoki Nerd Font 10
 
 # Picom
 exec_always picom --experimental-backends -b
-
 # Notification Daemon
 exec_always --no-startup-id $HOME/.config/dunst/launch_dunst.sh
-
 # Network Manager 
 exec --no-startup-id nm-applet
-
 # Keeb Layout
 exec_always setxkbmap fr bepo
-
 # Polybar "mainbar-i3"
 exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh
-
 # Conky
 exec_always --no-startup-id $HOME/.config/conky/launch_conky.sh
-
 # Last Used Wallpaper
 exec_always nitrogen --restore
-
 # Blueman Manager
 exec --no-startup-id blueman-manager
-
 # Power Manager
 exec_always --no-startup-id xfce4-power-manager
-
 # Fingerprint Sensor
 exec_always systemctl start python3-validity.service
+# Keepass XC
+exec --no-startup-id keepassxc
+
+## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
+# Scratchpads
+
+bindsym $mod2+Shift+S move scratchpad
+bindsym $mod2+S scratchpad show
+
+## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
+# Floating Windows
+
+for_window [class="gnome-calculator"] floating enable
+for_window [class="gwenview"] floating enable
+
+## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
+# Windows Configuration
+
+#disables title bars
+for_window [class=".*"] border pixel 3
+#sets gaps between windows
+gaps inner 16
+gaps outer 0
+gaps top 22
+# class                 border  backgr. text    indicator child_border
+client.focused          #f38ba8 #f38ba8 #ffffff #cdd6f4   #b4befe
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
 
 ## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# bindsym $mod2+l exec /home/antoine/.config/i3/scripts/lock.sh
-bindsym $mod2+l exec dm-tool switch-to-greeter
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -86,12 +111,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# kill focused window
-bindsym $mod+q kill
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id "rofi -show drun -show-icons"
 
 # change focus
 bindsym $mod+j focus left
@@ -180,10 +199,7 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -213,34 +229,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
-# Windows Configuration
 
-#disables title bars
-for_window [class=".*"] border pixel 3
 
-#sets gaps between windows
-gaps inner 16
-gaps outer 0
-gaps top 22
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #f38ba8 #f38ba8 #ffffff #cdd6f4   #b4befe
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
-client.background       #ffffff
-
-## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
-# Scratchpads
-
-bindsym $mod2+Shift+S move scratchpad
-bindsym $mod2+S scratchpad show
-
-## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
-# Floating Windows
-
-for_window [class="gnome-calculator"] floating enable
-for_window [class="Nm-connection-editor"] floating enable
