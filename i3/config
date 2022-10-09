@@ -7,7 +7,7 @@
 
 set $mod Mod4
 set $mod2 Mod1
-set $browser chromium
+set $browser librewolf
 set $term alacritty
 set $filem nautilus
 set $mus com.github.taiko2k.tauonmb
