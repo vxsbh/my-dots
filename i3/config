@@ -58,7 +58,7 @@ exec_always --no-startup-id $HOME/.config/conky/launch_conky.sh
 # Last Used Wallpaper
 exec_always nitrogen --restore
 # Blueman Manager
-exec --no-startup-id blueman-manager
+exec_always --no-startup-id blueman-manager &
 # Power Manager
 exec_always --no-startup-id xfce4-power-manager
 # Fingerprint Sensor
