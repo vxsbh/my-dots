@@ -8,7 +8,7 @@ CHOICE=$(echo $choice | tr '[:lower:]' '[:upper:]') #converts all characters to 
 menu () {
     if [ "$CHOICE" == 'O' ]
 then
-    read -p "How do you install software on your distro? (ex: pacman -S / dnf install / apt install) " distro
+    read -p "How does your package manager install software ? (ex: pacman -S / dnf install / apt install) " distro
     sudo $distro i3-gaps polybar picom dunst rofi conky nitrogen flatpak
 
 elif [ "$CHOICE" == 'N' ]
@@ -22,7 +22,6 @@ fi
 }
 
 menu
-
 
 # made by antoine, with love 
 # 15/10/2022
