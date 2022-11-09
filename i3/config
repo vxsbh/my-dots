@@ -9,7 +9,7 @@ set $mod Mod4
 set $mod2 Mod1
 set $browser librewolf
 set $term alacritty
-set $filem nautilus
+set $filem dolphin
 set $mus com.github.taiko2k.tauonmb
 
 ## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
