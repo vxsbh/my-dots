@@ -59,8 +59,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh
 exec_always --no-startup-id $HOME/.config/conky/launch_conky.sh
 # Last Used Wallpaper
 exec_always nitrogen --restore
-# Power Manager
-exec_always --no-startup-id xfce4-power-manager
 # Fingerprint Sensor
 exec_always systemctl start python3-validity.service
 # Keepass XC
