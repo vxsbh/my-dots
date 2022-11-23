@@ -80,11 +80,13 @@ for_window [class="gwenview"] floating enable
 # Windows Configuration
 
 #disables title bars
-for_window [class=".*"] border pixel 3
+for_window [class=".*"] border pixel 0
+
 #sets gaps between windows
 gaps inner 16
 gaps outer 0
 gaps top 22
+
 # class                 border  backgr. text    indicator child_border
 client.focused          #f38ba8 #f38ba8 #ffffff #cdd6f4   #b4befe
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
@@ -226,8 +228,3 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-
-
-
-
