@@ -63,7 +63,7 @@ exec_always nitrogen --restore
 exec_always systemctl start python3-validity.service
 # Keepass XC
 exec --no-startup-id keepassxc
-
+exec_always --no-startup-id xfce4-power-manager 
 ## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
 # Scratchpads
 
