@@ -58,12 +58,15 @@ exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh
 # Conky
 exec_always --no-startup-id $HOME/.config/conky/launch_conky.sh
 # Last Used Wallpaper
-exec_always nitrogen --restore
+# exec_always nitrogen --restore
+exec_always --no-startup-id killall back4.sh
+exec_always --no-startup-id /usr/local/bin/back4.sh 0.03 Downloads/falcon.gif
+# https://github.com/thomas10-10/foo-Wallpaper-Feh-Gif
+
 # Fingerprint Sensor
 exec_always systemctl start python3-validity.service
-# Keepass XC
-exec --no-startup-id keepassxc
 exec_always --no-startup-id xfce4-power-manager 
+
 ## _−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_−_
 # Scratchpads
 
