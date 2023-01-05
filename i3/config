@@ -60,7 +60,7 @@ exec_always --no-startup-id $HOME/.config/conky/launch_conky.sh
 # Last Used Wallpaper
 # exec_always nitrogen --restore
 exec_always --no-startup-id killall back4.sh
-exec_always --no-startup-id flock -n /var/lock/back4.lock /usr/bin/back4.sh auto Downloads/falcon.gif
+exec_always --no-startup-id flock -n /var/lock/back4.lock /usr/bin/back4.sh auto ~/Downloads/falcon.gif
 # https://github.com/thomas10-10/foo-Wallpaper-Feh-Gif
 # Fingerprint Sensor
 exec_always systemctl start python3-validity.service
